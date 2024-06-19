@@ -1,6 +1,7 @@
-// lib/main.dart
 import 'package:audio_ecommerce_app/Utils/theme.dart';
+import 'package:audio_ecommerce_app/Views/sign_in.dart';
 import 'package:flutter/material.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: appTheme, // Apply the custom theme
-      home: MyHomePage(),
+      home: const SignIn(), // Set SignIn as the home widget
     );
   }
 }
