@@ -1,9 +1,8 @@
 import 'package:audio_ecommerce_app/Components/primary_button.dart';
 import 'package:audio_ecommerce_app/Components/sign_in_text_field.dart';
-import 'package:audio_ecommerce_app/Utils/theme.dart';
+import 'package:audio_ecommerce_app/Views/homepage.dart';
 import 'package:audio_ecommerce_app/Views/sign_up.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
@@ -63,7 +62,16 @@ class _SignInState extends State<SignIn> {
                     ),
                   ),
                 ),
-                PrimaryButton(btnText: "Sign In", onPressed: (){}),
+                PrimaryButton(btnText: "Sign In"
+                    , onPressed: (){
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Homepage()
+                    )
+                  );
+                    }
+                ),
                 const SizedBox(height: 20,),
                 Center(
                   child: Row(
