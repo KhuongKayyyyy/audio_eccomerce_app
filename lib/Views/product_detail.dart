@@ -1,6 +1,9 @@
+import 'package:audio_ecommerce_app/Components/feature_item.dart';
 import 'package:audio_ecommerce_app/Components/homepage_featured_product.dart';
 import 'package:audio_ecommerce_app/Components/primary_button.dart';
 import 'package:audio_ecommerce_app/Data/fake_data.dart';
+import 'package:audio_ecommerce_app/Models/feature.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:audio_ecommerce_app/Models/product.dart';
 import 'package:audio_ecommerce_app/Components/review_item.dart';
@@ -36,6 +39,8 @@ class _ProductDetailState extends State<ProductDetail> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+
+                  //general information
                   Text(
                     "USD ${widget.product.price}",
                     style: TextStyle(
@@ -51,6 +56,7 @@ class _ProductDetailState extends State<ProductDetail> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+
                   // Navigation bar
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -150,140 +156,193 @@ class _ProductDetailState extends State<ProductDetail> {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 300,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: widget.product.imageUrls.length,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: CachedNetworkImage(
-                              imageUrl: widget.product.imageUrls.elementAt(index),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                  const SizedBox(height: 30),
-                  Text(
-                    "Review (${widget.product.reviews?.length ?? 0})",
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  SizedBox(
-                    height: 320,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: ListView.builder(
-                            itemCount: displayedReviews?.length ?? 0,
-                            itemBuilder: (context, index) {
-                              // Safely handle the nullable Review
-                              Review? review = displayedReviews?[index];
-                              if (review == null) {
-                                return const SizedBox.shrink(); // Return an empty widget if the review is null
-                              }
-                              return Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 10),
-                                child: ReviewItem(review: review),
-                              );
-                            },
-                          ),
-                        ),
-                        if (widget.product.reviews != null && widget.product.reviews!.length > 2)
-                          SizedBox(
-                            width: double.infinity,
-                            child: TextButton(
-                              onPressed: () {
-                                setState(() {
-                                  showAllReviews = !showAllReviews;
-                                });
-                              },
-                              style: ButtonStyle(
-                                  overlayColor: MaterialStateProperty.all(Colors.transparent)
-                              ),
-                              child: Text(
-                                showAllReviews ? 'Show less Reviews' : 'Show all Reviews',
-                                style: const TextStyle(
-                                    color: Colors.grey
-                                ),
-                              ),
-                            ),
-                          )
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                ],
-              ),
-            ),
-            Container(
-              height: 260,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                  color: Theme.of(context).colorScheme.secondary,
-              ),
-              child: Column(
-                children: [
-                  Padding(
-                    padding:const EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      children: [
-                        const Text(
-                          "Another Product",
-                          style: TextStyle(
-                            fontSize: 17,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        Spacer(),
-                        TextButton(onPressed: (){},
-                            child: const Text(
-                                "See All",
-                              style: TextStyle(
-                                color: Colors.grey,
-                              ),
-                            )
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 10,),
-                  Padding(
-                    padding: EdgeInsets.only(left: 20),
-                    child: SizedBox(
-                      height: 180, // Adjust height as needed
+
+                  //image section
+                  if (selectedIndex == 0) ...[
+                    SizedBox(
+                      height: 300,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: products.length,
+                        itemCount: widget.product.imageUrls.length,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 10),
-                            child: HomepageFeaturedProduct(product: products[index]),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: CachedNetworkImage(
+                                imageUrl: widget.product.imageUrls.elementAt(index),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           );
                         },
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 20,),
+                    //review section
+                    const SizedBox(height: 30),
+                    Text(
+                      "Review (${widget.product.reviews?.length ?? 0})",
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    SizedBox(
+                      height: 320,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: ListView.builder(
+                              itemCount: displayedReviews?.length ?? 0,
+                              itemBuilder: (context, index) {
+                                // Safely handle the nullable Review
+                                Review? review = displayedReviews?[index];
+                                if (review == null) {
+                                  return const SizedBox.shrink(); // Return an empty widget if the review is null
+                                }
+                                return Padding(
+                                  padding: const EdgeInsets.symmetric(vertical: 10),
+                                  child: ReviewItem(review: review),
+                                );
+                              },
+                            ),
+                          ),
+                          if (widget.product.reviews != null && widget.product.reviews!.length > 2)
+                            SizedBox(
+                              width: double.infinity,
+                              child: TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    showAllReviews = !showAllReviews;
+                                  });
+                                },
+                                style: ButtonStyle(
+                                    overlayColor: MaterialStateProperty.all(Colors.transparent)
+                                ),
+                                child: Text(
+                                  showAllReviews ? 'Show less Reviews' : 'Show all Reviews',
+                                  style: const TextStyle(
+                                      color: Colors.grey
+                                  ),
+                                ),
+                              ),
+                            )
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                  ]
                 ],
               ),
             ),
-            const SizedBox(height: 20,),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: PrimaryButton(btnText: "Add to Cart", onPressed: (){}),
-            ),
-            const SizedBox(height: 40,),
+
+            //overview
+            if(selectedIndex == 0) ...[
+              Container(
+                height: 260,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding:const EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        children: [
+                          const Text(
+                            "Another Product",
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          Spacer(),
+                          TextButton(onPressed: (){},
+                              child: const Text(
+                                "See All",
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              )
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 10,),
+                    Padding(
+                      padding: EdgeInsets.only(left: 20),
+                      child: SizedBox(
+                        height: 180, // Adjust height as needed
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: products.length,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 10),
+                              child: HomepageFeaturedProduct(product: products[index]),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 20,),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20,),
+              Padding(
+                padding:const EdgeInsets.symmetric(horizontal: 20),
+                child: PrimaryButton(btnText: "Add to Cart", onPressed: (){}),
+              ),
+              const SizedBox(height: 40,),
+            ],
+          //  Features
+            if(selectedIndex == 1)...[
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                        "Highly Detailed Audio",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18
+                      ),
+                    ),
+                    const SizedBox(height: 10,),
+                    const Text(
+                        "The speaker unit contains a diaphragm that is precision-grown from NAC Audio bio-cellulose, making it stiffer, lighter and stronger than regular PET speaker units, and allowing the sound-producing diaphragm to vibrate without the levels of distortion found in other speakers. ",
+                    ),
+                    const SizedBox(height: 10,),
+                    const Text(
+                      "The speaker unit contains a diaphragm that is precision-grown from NAC Audio bio-cellulose, making it stiffer, lighter and stronger than regular PET speaker units, and allowing the sound-producing diaphragm to vibrate without the levels of distortion found in other speakers. "
+                    ),
+                    Container(
+                      height: 240,
+                      child: ListView.builder(
+                        itemCount: widget.product.features.length,
+                        itemBuilder: (builder, index){
+                          Feature feature = widget.product.features.elementAt(index);
+                          return Padding(
+                            padding:const EdgeInsets.all(10),
+                            child: FeatureItem(feature: feature,),
+                          );
+                        },
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Padding(
+                padding:const EdgeInsets.symmetric(horizontal: 20),
+                child: PrimaryButton(btnText: "Add to Cart", onPressed: (){}),
+              ),
+              const SizedBox(height: 40,),
+            ]
           ],
         )
       ),
