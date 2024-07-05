@@ -9,8 +9,9 @@ class HomepageFeaturedProduct extends StatelessWidget{
     return Container(
       height: 215,
       width: 155,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: Colors.white,
+        borderRadius: BorderRadius.circular(15),
       ),
       child: Padding(
         padding: const EdgeInsets.all(10),

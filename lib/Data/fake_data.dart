@@ -1,4 +1,5 @@
 import 'package:audio_ecommerce_app/Models/feature.dart';
+import 'package:audio_ecommerce_app/Models/review.dart';
 import 'package:audio_ecommerce_app/Models/user.dart';
 import 'package:audio_ecommerce_app/Models/product.dart';
 
@@ -43,12 +44,21 @@ class FakeData {
     "https://www.bhphotovideo.com/images/images2500x2500/apple_mgyh3am_a_airpods_max_space_gray_1610233.jpg",
   ];
 
+
+  static Review review1 = Review(user: systemUser, stars: 5,commentContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", time: DateTime.now());
+  static Review review2 = Review(user: systemUser, stars: 4,commentContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", time: DateTime.now());
+  static Review review3 = Review(user: systemUser, stars: 3,commentContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", time: DateTime.now());
+  static Review review4 = Review(user: systemUser, stars: 2,commentContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", time: DateTime.now());
+
+
+  static List<Review> reviews = [review1, review2, review3, review4];
   // fake product data
   static Product product = Product(
     name: "SONY WH-1000XM5",
     price: 300,
     features: featureList,
     imageUrls: imgList,
+    reviews: reviews,
   );
 
   static Product product1 = Product(
@@ -56,7 +66,7 @@ class FakeData {
     price: 500,
     features: featureList,
     imageUrls: imgList1,
+    reviews: reviews,
   );
-
   static List<Product> products = [product,product1];
 }

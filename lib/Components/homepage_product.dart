@@ -1,4 +1,5 @@
 import 'package:audio_ecommerce_app/Models/product.dart';
+import 'package:audio_ecommerce_app/Views/product_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
@@ -37,7 +38,12 @@ class HomepageProduct extends StatelessWidget {
                   ),
                   const Spacer(),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ProductDetail(product: product))
+                      );
+                    },
                     child: Row(
                       children: [
                         Text(
