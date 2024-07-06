@@ -3,6 +3,7 @@ import 'package:audio_ecommerce_app/Components/homepage_product.dart';
 import 'package:audio_ecommerce_app/Components/search_bar_custom.dart';
 import 'package:audio_ecommerce_app/Data/fake_data.dart';
 import 'package:audio_ecommerce_app/Models/product.dart';
+import 'package:audio_ecommerce_app/Views/profile.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -39,18 +40,26 @@ class _HomepageState extends State<Homepage> {
                 ),
               ],
             ),
-            Spacer(),
-            Container(
-              height: 50,
-              width: 50,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(100),
-                child: CachedNetworkImage(
-                  imageUrl: FakeData.systemUser.imgURL,
-                  fit: BoxFit.cover,
+            const Spacer(),
+            InkWell(
+              onTap: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Profile())
+                );
+              },
+              child:SizedBox(
+                height: 50,
+                width: 50,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
+                  child: CachedNetworkImage(
+                    imageUrl: FakeData.systemUser.imgURL,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
-            ),
+            )
           ],
         ),
       ),
