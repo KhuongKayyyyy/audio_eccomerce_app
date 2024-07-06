@@ -3,6 +3,7 @@ import 'package:audio_ecommerce_app/Components/homepage_featured_product.dart';
 import 'package:audio_ecommerce_app/Components/primary_button.dart';
 import 'package:audio_ecommerce_app/Data/fake_data.dart';
 import 'package:audio_ecommerce_app/Models/feature.dart';
+import 'package:audio_ecommerce_app/Views/shopping_cart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:audio_ecommerce_app/Models/product.dart';
@@ -30,7 +31,14 @@ class _ProductDetailState extends State<ProductDetail> {
     List<Review>? displayedReviews = showAllReviews ? widget.product.reviews : widget.product.reviews?.take(2).toList();
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          IconButton(onPressed: (){
+            Navigator.push(context, 
+            MaterialPageRoute(builder: (context) => ShoppingCart()));
+          }, icon:const Icon(Icons.shopping_cart_outlined))
+        ],
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
