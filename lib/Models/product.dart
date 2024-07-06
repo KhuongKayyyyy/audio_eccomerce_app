@@ -15,4 +15,12 @@ class Product {
     required this.imageUrls,
     this.reviews,
   });
+  double calculateAverageStarRating() {
+    if (reviews == null || reviews!.isEmpty) {
+      return 0.0; // No reviews, return 0.0 as average rating
+    }
+
+    int totalStars = reviews!.fold(0, (sum, review) => sum + review.stars);
+    return totalStars / reviews!.length;
+  }
 }

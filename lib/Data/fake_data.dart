@@ -68,5 +68,21 @@ class FakeData {
     imageUrls: imgList1,
     reviews: reviews,
   );
-  static List<Product> products = [product,product1];
+
+  static Product product2 = Product(
+    name: "SONY WH-1000XM5",
+    price: 300,
+    features: featureList,
+    imageUrls: imgList,
+    reviews: reviews,
+  );
+
+  static Product product3 = Product(
+    name: "APPLE AIRPODS MAX",
+    price: 500,
+    features: featureList,
+    imageUrls: imgList1,
+    reviews: reviews,
+  );
+  static List<Product> products = [product,product1,product2,product3];
 }

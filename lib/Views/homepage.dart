@@ -6,6 +6,7 @@ import 'package:audio_ecommerce_app/Models/product.dart';
 import 'package:audio_ecommerce_app/Views/profile.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'search.dart';
 
 class Homepage extends StatefulWidget {
   @override
@@ -25,8 +26,11 @@ class _HomepageState extends State<Homepage> {
         title: Row(
           children: [
             IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.list),
+              onPressed: () {
+                Navigator.push(context, 
+                MaterialPageRoute(builder: (context) => Search()));
+              },
+              icon: const Icon(Icons.search),
             ),
             Spacer(),
             Row(
@@ -87,7 +91,7 @@ class _HomepageState extends State<Homepage> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                SearchBarCustom(),
+                // SearchBarCustom(),
               ],
             ),
           ),
