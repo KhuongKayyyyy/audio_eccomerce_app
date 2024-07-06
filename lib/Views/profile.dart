@@ -101,9 +101,9 @@ class Profile extends StatelessWidget{
             const SizedBox(height: 20,),
             ProfileSection(settingType: "Report a bug"),
             ProfileSection(settingType: "Log out",onTap: (){
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const SignIn())
+              Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(builder: (context) => const SignIn()),
+                    (Route<dynamic> route) => false,
               );
             },),
           //
