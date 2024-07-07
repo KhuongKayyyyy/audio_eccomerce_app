@@ -41,8 +41,8 @@ class Search extends StatelessWidget{
                 fontSize: 17
               ),
             ),
-            SearchItem(seachedItem: "SONY WH-1000XM5"),
-            SearchItem(seachedItem: "APPLE AIRPODS MAX"),
+            SearchItem(searchedItem: "SONY WH-1000XM5"),
+            SearchItem(searchedItem: "APPLE AIRPODS MAX"),
             const SizedBox(height: 20,),
             const Text(
               "Popular Product",
