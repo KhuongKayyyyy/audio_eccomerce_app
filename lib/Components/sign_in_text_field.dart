@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SignInTextField extends StatelessWidget{
   String type;
-  SignInTextField({required this.type});
+  SignInTextField({super.key, required this.type});
 
   @override
   Widget build(BuildContext context) {

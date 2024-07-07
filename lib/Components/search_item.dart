@@ -1,5 +1,4 @@
 import 'package:audio_ecommerce_app/Views/explore_product.dart';
-import 'package:audio_ecommerce_app/Views/search.dart';
 import 'package:flutter/material.dart';
 class SearchItem extends StatelessWidget{
   String searchedItem;

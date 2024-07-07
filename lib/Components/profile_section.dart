@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 class ProfileSection extends StatelessWidget{
   String settingType;
   final VoidCallback? onTap;
-  ProfileSection({required this.settingType, this.onTap});
+  ProfileSection({super.key, required this.settingType, this.onTap});
   @override
   Widget build(BuildContext context) {
     return Column(

@@ -6,10 +6,10 @@ import '../Models/product.dart';
 
 class PopularProductItem extends StatelessWidget{
   Product product;
-  PopularProductItem({required this.product});
+  PopularProductItem({super.key, required this.product});
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 100,
       child: InkWell(
         onTap: (){

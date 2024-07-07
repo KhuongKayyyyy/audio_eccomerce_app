@@ -1,9 +1,7 @@
 import 'package:audio_ecommerce_app/Components/primary_button.dart';
 import 'package:audio_ecommerce_app/Components/sign_in_text_field.dart';
-import 'package:audio_ecommerce_app/Utils/theme.dart';
 import 'package:audio_ecommerce_app/Views/sign_in.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {

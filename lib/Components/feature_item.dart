@@ -3,10 +3,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 class FeatureItem extends StatelessWidget{
   Feature feature;
-  FeatureItem({required this.feature});
+  FeatureItem({super.key, required this.feature});
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 100,
       child: Row(
         children: [

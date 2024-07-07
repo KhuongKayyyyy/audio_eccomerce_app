@@ -1,6 +1,5 @@
 import 'package:audio_ecommerce_app/Components/homepage_featured_product.dart';
 import 'package:audio_ecommerce_app/Components/homepage_product.dart';
-import 'package:audio_ecommerce_app/Components/search_bar_custom.dart';
 import 'package:audio_ecommerce_app/Data/fake_data.dart';
 import 'package:audio_ecommerce_app/Models/product.dart';
 import 'package:audio_ecommerce_app/Views/profile.dart';

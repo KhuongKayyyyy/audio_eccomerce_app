@@ -102,145 +102,143 @@ class _ExploreProductState extends State<ExploreProduct> {
                               right: 20,
                             ),
                             child: SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.62, // Adjust the height as needed
-                              child: Container(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    // Modal head
-                                    Row(
-                                      children: [
-                                        const Text(
-                                          "Filter",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold, fontSize: 20),
-                                        ),
-                                        const Spacer(),
-                                        IconButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                          icon: const Icon(Icons.close),
-                                        ),
-                                      ],
-                                    ),
-                                    // Modal body
-                                    const SizedBox(height: 15),
-                                    const Text(
-                                      "Category",
-                                      style: TextStyle(fontWeight: FontWeight.w600),
-                                    ),
-                                    const SizedBox(height: 15),
-                                    SingleChildScrollView(
-                                      scrollDirection: Axis.horizontal,
-                                      child: Row(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                        children: List.generate(4, (index) {
-                                          return Container(
-                                            height: 40,
-                                            margin: const EdgeInsets.symmetric(horizontal: 8),
-                                            decoration: BoxDecoration(
-                                              color: selectedIndex == index
-                                                  ? Theme.of(context).primaryColor
-                                                  : Colors.transparent,
-                                              borderRadius: BorderRadius.circular(50),
-                                            ),
-                                            child: TextButton(
-                                              onPressed: () {
-                                                setState(() {
-                                                  selectedIndex = index;
-                                                });
-                                              },
-                                              child: Text(
-                                                buttonTitles[index],
-                                                style: TextStyle(
-                                                  color: selectedIndex == index
-                                                      ? Colors.white
-                                                      : Colors.grey,
-                                                ),
-                                              ),
-                                            ),
-                                          );
-                                        }),
+                              height: MediaQuery.of(context).size.height * 0.615, // Adjust the height as needed
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  // Modal head
+                                  Row(
+                                    children: [
+                                      const Text(
+                                        "Filter",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold, fontSize: 20),
                                       ),
-                                    ),
-                                    const SizedBox(height: 30),
-                                    const Text(
-                                      "Sort by",
-                                      style: TextStyle(fontWeight: FontWeight.w600),
-                                    ),
-                                    const SizedBox(height: 15),
-                                    // Filter buttons
-                                    Row(
-                                      children: [
-                                        FilterButton(filterType: "Popularity"),
-                                        const SizedBox(width: 15),
-                                        FilterButton(filterType: "Newest"),
-                                        const SizedBox(width: 15),
-                                        FilterButton(filterType: "Oldest"),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 15),
-                                    Row(
-                                      children: [
-                                        FilterButton(filterType: "High Price"),
-                                        const SizedBox(width: 15),
-                                        FilterButton(filterType: "Low Price"),
-                                        const SizedBox(width: 15),
-                                        FilterButton(filterType: "Review"),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 30),
-                                    const Text("Price Range"),
-                                    const SizedBox(height: 15),
-                                    Row(
-                                      children: [
-                                        Expanded(
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.grey[300]!,
-                                                    width: 2),
-                                                borderRadius: BorderRadius.circular(10)),
-                                            child: Padding(
-                                              padding: const EdgeInsets.all(10),
-                                              child: Text(
-                                                "Min Price",
-                                                style: TextStyle(color: Colors.grey[300]!),
+                                      const Spacer(),
+                                      IconButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        icon: const Icon(Icons.close),
+                                      ),
+                                    ],
+                                  ),
+                                  // Modal body
+                                  const SizedBox(height: 15),
+                                  const Text(
+                                    "Category",
+                                    style: TextStyle(fontWeight: FontWeight.w600),
+                                  ),
+                                  const SizedBox(height: 15),
+                                  SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                      children: List.generate(4, (index) {
+                                        return Container(
+                                          height: 40,
+                                          margin: const EdgeInsets.symmetric(horizontal: 8),
+                                          decoration: BoxDecoration(
+                                            color: selectedIndex == index
+                                                ? Theme.of(context).primaryColor
+                                                : Colors.transparent,
+                                            borderRadius: BorderRadius.circular(50),
+                                          ),
+                                          child: TextButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                selectedIndex = index;
+                                              });
+                                            },
+                                            child: Text(
+                                              buttonTitles[index],
+                                              style: TextStyle(
+                                                color: selectedIndex == index
+                                                    ? Colors.white
+                                                    : Colors.grey,
                                               ),
                                             ),
                                           ),
-                                        ),
-                                        const SizedBox(width: 15),
-                                        Expanded(
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.grey[300]!,
-                                                    width: 2),
-                                                borderRadius: BorderRadius.circular(10)),
-                                            child: Padding(
-                                              padding: const EdgeInsets.all(10),
-                                              child: Text(
-                                                "Max Price",
-                                                style: TextStyle(color: Colors.grey[300]!),
-                                              ),
+                                        );
+                                      }),
+                                    ),
+                                  ),
+                                  const SizedBox(height: 30),
+                                  const Text(
+                                    "Sort by",
+                                    style: TextStyle(fontWeight: FontWeight.w600),
+                                  ),
+                                  const SizedBox(height: 15),
+                                  // Filter buttons
+                                  Row(
+                                    children: [
+                                      FilterButton(filterType: "Popularity"),
+                                      const SizedBox(width: 15),
+                                      FilterButton(filterType: "Newest"),
+                                      const SizedBox(width: 15),
+                                      FilterButton(filterType: "Oldest"),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 15),
+                                  Row(
+                                    children: [
+                                      FilterButton(filterType: "High Price"),
+                                      const SizedBox(width: 15),
+                                      FilterButton(filterType: "Low Price"),
+                                      const SizedBox(width: 15),
+                                      FilterButton(filterType: "Review"),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 30),
+                                  const Text("Price Range"),
+                                  const SizedBox(height: 15),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  color: Colors.grey[300]!,
+                                                  width: 2),
+                                              borderRadius: BorderRadius.circular(10)),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(10),
+                                            child: Text(
+                                              "Min Price",
+                                              style: TextStyle(color: Colors.grey[300]!),
                                             ),
                                           ),
                                         ),
-                                        const SizedBox(width: 20),
-                                      ],
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(20),
-                                      child: PrimaryButton(
-                                        btnText: "Apply Filter",
-                                        onPressed: () {},
                                       ),
+                                      const SizedBox(width: 15),
+                                      Expanded(
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  color: Colors.grey[300]!,
+                                                  width: 2),
+                                              borderRadius: BorderRadius.circular(10)),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(10),
+                                            child: Text(
+                                              "Max Price",
+                                              style: TextStyle(color: Colors.grey[300]!),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(width: 20),
+                                    ],
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(20),
+                                    child: PrimaryButton(
+                                      btnText: "Apply Filter",
+                                      onPressed: () {},
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           );

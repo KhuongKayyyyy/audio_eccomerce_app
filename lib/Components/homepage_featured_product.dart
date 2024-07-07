@@ -3,7 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 class HomepageFeaturedProduct extends StatelessWidget{
   Product product;
-  HomepageFeaturedProduct({required this.product});
+  HomepageFeaturedProduct({super.key, required this.product});
   @override
   Widget build(BuildContext context) {
     return Container(

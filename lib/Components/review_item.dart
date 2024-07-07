@@ -4,10 +4,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 class ReviewItem extends StatelessWidget{
   Review review;
-  ReviewItem({required this.review});
+  ReviewItem({super.key, required this.review});
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 200,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
